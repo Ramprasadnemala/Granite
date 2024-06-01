@@ -35,7 +35,7 @@ app.get('/ping', (req, res) => {
     res.send('PONG')
 });
 // /products
-app.use('/Granite', productRoutes);
+app.use('/products', productRoutes);
 // /users
 app.use('/users', userRoutes);
 

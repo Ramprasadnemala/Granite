@@ -4,6 +4,10 @@ const createProduct = async (req, res) => {
     try {
         const { date, DC_No, vehicleNo, materialType, transportName, sourcePlace,gross,tare ,net,loadingTime,unloadingTime,royalty,remarks} = req.body
 
+        if (typeof materialType !== 'string') {
+            return res.status(400).json({ error: 'Invalid materialType value. It must be a string.' });
+        }
+
         const product = new Product({
             date,
             DC_No,
