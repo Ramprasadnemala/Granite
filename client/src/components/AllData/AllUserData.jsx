@@ -38,7 +38,7 @@ const AllUserData = () => {
     setSubmissionStatus('Submitting...');
 
     try {
-      const response = await fetch('https://granite-server.vercel.app/Granite/add-emp', {
+      const response = await fetch('https://granite-server.vercel.app/products/add-emp', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
