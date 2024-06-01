@@ -77,7 +77,7 @@ const AllData = () => {
                     <table className="table2001">
                         <thead>
                             <tr>
-                                <th>Date</th>
+                                <th>Date___</th>
                                 <th>DC_No</th>
                                 <th>VehicleNo</th>
                                 <th>Material</th>
