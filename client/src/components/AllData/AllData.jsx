@@ -13,7 +13,7 @@ const AllData = () => {
     useEffect(() => {
         const getData = async () => {
           try {
-            const response = await fetch('');
+            const response = await fetch('https://granite-server.vercel.app/Granite/allemployees');
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
