@@ -63,3 +63,24 @@
     cursor: pointer;
   }
   
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .password-input-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+ 
+  .password-input-container input {
+    flex: 1;
+    padding-right: 40px; /* Add padding to ensure the icon doesn't overlap the text */
+  }
+  
+  .password-icon {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color:rgb(116, 114, 114);
+  }
