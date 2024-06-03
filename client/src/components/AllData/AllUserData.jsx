@@ -19,6 +19,7 @@ const AllUserData = () => {
   });
 
   const [submissionStatus, setSubmissionStatus] = useState('');
+  const [formErrors, setFormErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,10 +32,34 @@ const AllUserData = () => {
     }
 
     setFormData(updatedFormData);
+    setFormErrors({ ...formErrors, [name]: '' }); // Clear the error message for the field being edited
+  };
+
+  const validateForm = () => {
+    const errors = {};
+
+    if (!formData.date) errors.date = 'Date is required';
+    if (!formData.DC_No) errors.DC_No = 'DC No is required';
+    if (!formData.vehicleNo) errors.vehicleNo = 'Vehicle No is required';
+    if (!formData.materialType) errors.materialType = 'Material Type is required';
+    if (!formData.transportName) errors.transportName = 'Transport Name is required';
+    if (!formData.sourcePlace) errors.sourcePlace = 'Source Place is required';
+    if (!formData.gross) errors.gross = 'Gross is required';
+    if (!formData.tare) errors.tare = 'Tare is required';
+    if (!formData.loadingTime) errors.loadingTime = 'Loading Time is required';
+    if (!formData.unloadingTime) errors.unloadingTime = 'Unloading Time is required';
+
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validateForm()) {
+      setSubmissionStatus('Please fill in all required fields.');
+      return;
+    }
+
     setSubmissionStatus('Submitting...');
 
     try {
@@ -80,14 +105,17 @@ const AllUserData = () => {
         <div className="full-width">
           <label>Date:</label>
           <input type="date" name="date" value={formData.date} onChange={handleChange} />
+          {formErrors.date && <span className="error">{formErrors.date}</span>}
         </div>
         <div className="full-width">
           <label>DC No:</label>
           <input type="text" name="DC_No" placeholder="please enter DC No" value={formData.DC_No} onChange={handleChange} />
+          {formErrors.DC_No && <span className="error">{formErrors.DC_No}</span>}
         </div>
         <div className="full-width">
           <label>Vehicle No:</label>
           <input type="text" name="vehicleNo" placeholder="please enter vehicleNo" value={formData.vehicleNo} onChange={handleChange} />
+          {formErrors.vehicleNo && <span className="error">{formErrors.vehicleNo}</span>}
         </div>
         <div className="full-width3">
           <label>Material Type:</label>
@@ -98,22 +126,27 @@ const AllUserData = () => {
             <option value="3ton to 6ton">3ton to 6ton</option>
             <option value="6ton to 10ton">6ton to 10ton</option>
           </select>
+          {formErrors.materialType && <span className="error">{formErrors.materialType}</span>}
         </div>
         <div className="full-width">
           <label>Transport:</label>
           <input type="text" name="transportName" placeholder="please enter transport" value={formData.transportName} onChange={handleChange} />
+          {formErrors.transportName && <span className="error">{formErrors.transportName}</span>}
         </div>
         <div className="full-width">
           <label>Source of Place:</label>
           <input type="text" name="sourcePlace" placeholder="please enter source" value={formData.sourcePlace} onChange={handleChange} />
+          {formErrors.sourcePlace && <span className="error">{formErrors.sourcePlace}</span>}
         </div>
         <div className="full-width">
           <label>Gross:</label>
           <input type="number" name="gross" placeholder="please enter gross" value={formData.gross} onChange={handleChange} />
+          {formErrors.gross && <span className="error">{formErrors.gross}</span>}
         </div>
         <div className="full-width">
           <label>Tare:</label>
           <input type="number" name="tare" placeholder="please enter tare" value={formData.tare} onChange={handleChange} />
+          {formErrors.tare && <span className="error">{formErrors.tare}</span>}
         </div>
         <div className="full-width">
           <label>Net:</label>
@@ -126,10 +159,12 @@ const AllUserData = () => {
         <div className="full-width">
           <label>Loading Time:</label>
           <input type="time" name="loadingTime" value={formData.loadingTime} onChange={handleChange} />
+          {formErrors.loadingTime && <span className="error">{formErrors.loadingTime}</span>}
         </div>
         <div className="full-width">
           <label>Unloading Time:</label>
           <input type="time" name="unloadingTime" value={formData.unloadingTime} onChange={handleChange} />
+          {formErrors.unloadingTime && <span className="error">{formErrors.unloadingTime}</span>}
         </div>
         <div className="full-width2">
           <label>Remarks:</label>
