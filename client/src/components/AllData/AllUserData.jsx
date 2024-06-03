@@ -64,10 +64,11 @@ const AllUserData = () => {
           remarks: '',
         });
       } else {
-        setSubmissionStatus('Failed to submit form.');
+        const errorData = await response.json();
+        setSubmissionStatus(`Failed to submit form: ${errorData.message}`);
       }
     } catch (error) {
-      setSubmissionStatus('An error occurred while submitting the form.');
+      setSubmissionStatus(`An error occurred while submitting the form: ${error.message}`);
     }
   };
 
