@@ -6,7 +6,7 @@ const AllUserData = () => {
     date: '',
     DC_No: '',
     vehicleNo: '',
-    materialType: 'select opation',
+    materialType: '',
     transportName: '',
     sourcePlace: '',
     gross: '',
@@ -48,6 +48,21 @@ const AllUserData = () => {
 
       if (response.ok) {
         setSubmissionStatus('Form submitted successfully!');
+        setFormData({
+          date: '',
+          DC_No: '',
+          vehicleNo: '',
+          materialType: '',
+          transportName: '',
+          sourcePlace: '',
+          gross: '',
+          tare: '',
+          net: '',
+          loadingTime: '',
+          unloadingTime: '',
+          royalty: '',
+          remarks: '',
+        });
       } else {
         setSubmissionStatus('Failed to submit form.');
       }
@@ -76,7 +91,7 @@ const AllUserData = () => {
         <div className="full-width3">
           <label>Material Type:</label>
           <select name="materialType" value={formData.materialType} onChange={handleChange}>
-            <option value="select opation">--select opation--</option>
+            <option value="">--select option--</option>
             <option value="10kg to 1ton">10kg to 1ton</option>
             <option value="1ton to 3ton">1ton to 3ton</option>
             <option value="3ton to 6ton">3ton to 6ton</option>
