@@ -101,6 +101,8 @@
     max-height: 500px; /* Set the maximum height */
     overflow-y: auto;  /* Enable vertical scrolling */
   }
+ 
+
   .underline{
     max-height: 3px;
     width: 100%;
